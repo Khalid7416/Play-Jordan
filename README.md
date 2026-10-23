@@ -59,11 +59,31 @@ npm install
 npm run dev
 
 # 4. Run unit tests
-npm test # or: npx tsx --test src/utils/pricingAndLoyalty.test.ts src/utils/otpVerification.test.ts
+npm test
 
-# 5. Build for production
+# 5. Build for production (outputs to ./dist with relative base path)
 npm run build
 ```
+
+---
+
+## 🌐 Deploying to GitHub Pages (Fix for Blank White Page)
+
+If you saw a blank white page on GitHub Pages, it was caused by two common factors:
+1. **Asset Base Path**: Vite by default looks for `/assets/` at the root domain (`https://username.github.io/assets/`) instead of your repository subfolder (`https://username.github.io/playjo/assets/`). This has been fixed in `vite.config.ts` by configuring `base: './'`.
+2. **Serving Uncompiled Code**: If GitHub Pages is pointed directly to the `main` branch root, it serves uncompiled `.tsx` files which browsers cannot execute.
+
+### Method 1: Automated GitHub Actions (Recommended)
+1. Push your repository to GitHub.
+2. In your GitHub repository, click **Settings** → **Pages** (in the left sidebar).
+3. Under **Build and deployment** → **Source**, change from *Deploy from a branch* to **GitHub Actions**.
+4. The workflow in `.github/workflows/deploy.yml` will automatically build and deploy your site on every commit!
+
+### Method 2: 1-Click CLI Deployment (`gh-pages`)
+```bash
+npm run deploy
+```
+This builds your project and publishes the compiled `dist/` directory to a `gh-pages` branch on GitHub. In **Settings** → **Pages**, set **Branch: `gh-pages`** and **Folder: `/ (root)`**.
 
 ---
 

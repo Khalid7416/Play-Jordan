@@ -778,7 +778,27 @@ git branch -M main
 git push -u origin main --tags
 
 # -------------------------------------------------------------------------
-# STEP 3: CREATING & MANAGING MULTIPLE VERSIONS
+# STEP 3: FIX BLANK WHITE PAGE ON GITHUB PAGES
+# -------------------------------------------------------------------------
+# Why it was blank:
+# 1. Vite defaulted to base: '/' which looked for assets at root domain instead of repo subfolder.
+#    -> FIXED: We configured base: './' in vite.config.ts!
+# 2. GitHub Pages must serve the compiled 'dist' bundle, NOT raw .tsx files!
+#
+# HOW TO ACTIVATE GITHUB PAGES (Two Easy Methods):
+#
+# Method A (Recommended - Automated GitHub Actions):
+# 1. Go to your repo on GitHub -> Settings -> Pages.
+# 2. Under 'Build and deployment' -> 'Source', select 'GitHub Actions'.
+# 3. Done! The workflow in .github/workflows/deploy.yml will auto-build and publish on every push!
+#
+# Method B (CLI 1-Click with gh-pages):
+# Run in terminal:
+# npm run deploy
+# Then in Settings -> Pages, select branch 'gh-pages' -> '/ (root)'.
+
+# -------------------------------------------------------------------------
+# STEP 4: CREATING & MANAGING MULTIPLE VERSIONS
 # -------------------------------------------------------------------------
 
 # 1. Semantic Version Releases (Tags):
