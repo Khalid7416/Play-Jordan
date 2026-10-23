@@ -1,0 +1,6 @@
+{
+  "name": "PlayJo - Jordan Sports Facilities & Booking Platform",
+  "description": "Comprehensive sports club directory, court booking platform, SMS OTP verification, and loyalty rewards for Jordan (Amman, Aqaba, Irbid).",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
